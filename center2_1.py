@@ -43,9 +43,9 @@ from GUI_main import Form
 startTime = time.time()
 
 # select running version 0 is calculation 1 is plotting
-running_version   = 1
+running_version   = 0
 
-Transducer_number = 0
+Transducer_number = 1
 
 #######################################################################################
 ###############################################Polting spec
@@ -88,16 +88,16 @@ transducer_plot, transducer_plot_actor = pty.translate(ren, [0, 0, 74], transduc
 ########################################Target and Sonication spec
 ##thalamus validation spec focal length 70.92, ROC 80 width =63
 
-Target                   = M1
-Target_name              = "M1"
+Target                   = S1_re
+Target_name              = "S1"
 focal_length             = 55.22
 ROC                      = 71
 width                    = 65
 length_transducer2target = 55.22
 
-number_of_trandcuer      = 950                  ### 950 -> 3mm
-range_angle              = 60  ### analysis range as angle (degree)
-number_of_beamlines      = 500
+number_of_trandcuer      = 1001                  ### 950 -> 3mm
+range_angle              = 45  ### analysis range as angle (degree)
+number_of_beamlines      = 10
 
 
 #######################################################################################
@@ -154,7 +154,7 @@ axes.SetTotalLength(10, 10, 10)
 axes.AxisLabelsOff()
 
 # make point at target
-focus  , focus_actor   = pty.addPoint(ren, Target, [1, 0, 0], 4)
+focus  , focus_actor   = pty.addPoint(ren, Target, [1, 0, 0], 2)
 focus.Update() #### it is very important!! do not remove !!
 
 # find center line of analysis range
