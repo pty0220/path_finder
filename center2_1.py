@@ -95,7 +95,7 @@ ROC                      = 71
 width                    = 65
 length_transducer2target = 55.22
 
-number_of_trandcuer      = 1001                  ### 950 -> 3mm
+number_of_trandcuer      = 310                  ### 950 -> 3mm
 range_angle              = 45  ### analysis range as angle (degree)
 number_of_beamlines      = 10
 
