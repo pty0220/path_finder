@@ -267,11 +267,13 @@ def main_cal(running_version,Target,Target_name,number_of_trandcucer,number_of_b
                         # cut skull for speed
 
                         # find intersection point at each beam lines with skull
-                        out_intersection_point[str(i)], in_intersection_point[str(i)], final_beam_end[str(i)], layer1_beam_end[str(i)], result[str(i)],result_layer1[str(i)], ARC[str(i)], ARC_layer1[str(i)]\
+                        out_intersection_point[str(i)], in_intersection_point[str(i)], final_beam_end[str(i)], layer1_beam_end[str(i)], result[str(i)],result_layer1[str(i)], ARC[str(i)], ARC_layer1[str(i)],tt,ttt\
                             = cal.calculator(skull_cut, focus, transducer['tran' + str(i)], Target, raycasting_length, skull_properties, water_properties, random_properties)
 
                         a = out_intersection_point[str(i)][0][:]
                         # ray tracking result
+                        tt= 0
+                        ttt=0
 
                         percentage[i][0] = (np.sum(result[str(i)]) / transducer['tran' + str(i)].GetNumberOfPoints()) * 100
                         percentage[i][1] = i

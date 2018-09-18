@@ -43,9 +43,9 @@ from GUI_main import Form
 startTime = time.time()
 
 # select running version 0 is calculation 1 is plotting
-running_version   = 0
+running_version   = 1
 
-Transducer_number = 1
+Transducer_number = 53
 
 #######################################################################################
 ###############################################Polting spec
@@ -88,16 +88,16 @@ transducer_plot, transducer_plot_actor = pty.translate(ren, [0, 0, 74], transduc
 ########################################Target and Sonication spec
 ##thalamus validation spec focal length 70.92, ROC 80 width =63
 
-Target                   = S1_re
-Target_name              = "S1"
+Target                   = DLPFC
+Target_name              = "DLPFC"
 focal_length             = 55.22
 ROC                      = 71
 width                    = 65
 length_transducer2target = 55.22
 
-number_of_trandcuer      = 310                  ### 950 -> 3mm
+number_of_trandcuer      = 1250                  ### 950 -> 3mm
 range_angle              = 45  ### analysis range as angle (degree)
-number_of_beamlines      = 10
+number_of_beamlines      = 100
 
 
 #######################################################################################
@@ -268,12 +268,13 @@ if running_version == 0:
                     # cut skull for speed
 
                     # find intersection point at each beam lines with skull
-                    out_intersection_point[str(i)], in_intersection_point[str(i)], final_beam_end[str(i)], layer1_beam_end[str(i)], result[str(i)],result_layer1[str(i)], ARC[str(i)], ARC_layer1[str(i)], glyphActorEarth_out,glyphActorEarth_out_in\
+                    out_intersection_point[str(i)], in_intersection_point[str(i)], final_beam_end[str(i)], layer1_beam_end[str(i)], result[str(i)],result_layer1[str(i)], ARC[str(i)], ARC_layer1[str(i)],tt,ttt\
                         = cal.calculator(skull_cut, focus, transducer['tran' + str(i)], Target, raycasting_length, skull_properties, water_properties, random_properties)
 
                     a = out_intersection_point[str(i)][0][:]
                     # ray tracking result
-
+                    tt = 0
+                    ttt = 0
                     percentage[i][0] = (np.sum(result[str(i)]) / transducer['tran' + str(i)].GetNumberOfPoints()) * 100
                     percentage[i][1] = i
                     percentage[i][2] = xy_angle
@@ -459,7 +460,7 @@ else:
     skull_cut, skull_cut_actor = pty.cut_skull_loop(frist_cutskull, Target, dir_vector)
 
     # find intersection point at each beam lines with skull
-    out_intersection_point, in_intersection_point, final_beam_end, layer1_beam_end, result,result_layer1, ARC, ARC_out,out_vector_actor, in_vector_actor =\
+    out_intersection_point, in_intersection_point, final_beam_end, layer1_beam_end, result,result_layer1, ARC, ARC_out, out_vector_actor, in_vector_actor =\
         cal.calculator(skull_cut, focus, transducer, Target, raycasting_length, skull_properties, water_properties, random_properties)
 
     # percentage
@@ -584,6 +585,9 @@ else:
     renWin.SetSize(1000,800)
 
     iren = vtk.vtkRenderWindowInteractor()
+    #
+    # out_vector_actor=0
+    # in_vector_actor=0
 
     #open GUI switch
     app = QtWidgets.QApplication(sys.argv)

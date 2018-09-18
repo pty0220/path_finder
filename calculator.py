@@ -308,9 +308,9 @@ def calculator (skull_cut,focus,transducer,target,raycasting_length, skull_prope
     In_ARC = np.mean(In_RC)
 
     ARC = (Out_ARC+In_ARC)/2
+    a =1
 
 
-
-    return out_intersection_point,in_intersection_point,final_beam_end,second_beam_end,result_2layer,result_1layer,ARC, Out_ARC
+    return out_intersection_point,in_intersection_point,final_beam_end,second_beam_end,result_2layer,result_1layer,ARC, Out_ARC,glyphActorEarth_out, glyphActorEarth_in
 
 
